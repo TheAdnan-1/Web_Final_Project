@@ -1,0 +1,38 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Supervisor extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'designation',
+        'department',
+        'company_name',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class);
+    }
+}
